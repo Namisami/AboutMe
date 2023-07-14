@@ -53,7 +53,6 @@ const Slider = ({
       icon_list={ item.icon_list }
       description={ item.description }
       position={ positionCalc(index) }
-      side={ side }
     />
   )
 

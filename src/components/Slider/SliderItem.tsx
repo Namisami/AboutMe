@@ -9,8 +9,7 @@ export interface SliderItemProps extends React.HTMLAttributes<HTMLDivElement> {
   start_date: Date
   icon_list: string[]
   description: string
-  position: number
-  side: number
+  position?: number
 }
 
 export interface Style {
@@ -32,43 +31,43 @@ const SliderItem = ({
   const oldPosition = usePrevious(position)
 
   useEffect(() => {
-    console.log(position, oldPosition)
-    if (position === 0 && oldPosition !>= 3) {
-      setStyle({
-        transform: `translateX(-100%) 
-                    translateX(-20px)`,
-        opacity: 0,
-        transition: '0s transform'
-      })
-      setTimeout(() => {
+    if (position !== undefined) {
+      if (position === 0 && oldPosition !>= 3) {
         setStyle({
-          transform: `translateX(${position * 100}%) 
-                      translateX(${position * 20}px)`,
-          opacity: 1
-        })
-      }, 50)
-    } else if (position !>= 3 && oldPosition === 0) {
-      setStyle({
-        transition: 'transform 0s',
-        animation: '0.5s nextSlide cubic-bezier(0.31, 0.22, 0.57, 1.07)'
-      })
-      setTimeout(() => {
-        setStyle({
-          transform: `translateX(${position * 100}%) 
-                      translateX(${position * 20}px)`,
+          transform: `translateX(-100%) 
+                      translateX(-20px)`,
           opacity: 0,
+          transition: '0s transform'
         })
-      }, 500)
-    } else {
-      setTimeout(() => {
+        setTimeout(() => {
+          setStyle({
+            transform: `translateX(${position * 100}%) 
+                        translateX(${position * 20}px)`,
+            opacity: 1
+          })
+        }, 50)
+      } else if (position !>= 3 && oldPosition === 0) {
         setStyle({
-          transform: `translateX(${position * 100}%) 
-                      translateX(${position * 20}px)`,
-          opacity: 1
+          transition: 'transform 0s',
+          animation: '0.5s nextSlide cubic-bezier(0.31, 0.22, 0.57, 1.07)'
         })
-      }, 50)
+        setTimeout(() => {
+          setStyle({
+            transform: `translateX(${position * 100}%) 
+                        translateX(${position * 20}px)`,
+            opacity: 0,
+          })
+        }, 500)
+      } else {
+        setTimeout(() => {
+          setStyle({
+            transform: `translateX(${position * 100}%) 
+                        translateX(${position * 20}px)`,
+            opacity: 1
+          })
+        }, 50)
+      }
     }
-    console.log(style)
   }, [position])
 
   const convertDate = () => {
