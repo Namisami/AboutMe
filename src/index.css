@@ -6,3 +6,9 @@ html, body {
 body {
   background: #000426;
 }
+h2 {
+  font-size: 2em;
+  font-weight: 500;
+  margin-bottom: 10px;
+  margin-left: 15px;
+}
