@@ -1,0 +1,18 @@
+.slider-wrapper {
+  position: relative;
+  display: flex;
+}
+.slider-wrapper__pagination {
+  cursor: pointer;
+  display: flex;
+  position: absolute;
+  top: 50%;  
+  transform: translateY(-50%);
+  z-index: 1;
+}
+.slider-wrapper__pagination--left {
+  left: -40px;
+}
+.slider-wrapper__pagination--right {
+  right: -40px;
+}
