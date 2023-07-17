@@ -1,7 +1,8 @@
 import './App.css'
-import Slider from '@/components/Slider/Slider'
-import Container from '@/components/Container/Container';
+import Slider from '@components/Slider/Slider'
+import Container from '@components/Container/Container';
 import "the-new-css-reset/css/reset.css"; 
+import TileSet from '@components/TileSet/TileSet';
 
 
 function App() {
@@ -36,6 +37,28 @@ function App() {
       description: 'В ходе учебной программы второго семестра начал изучать Vue. Работал также с Vuetify, Vuex.',
     },
   ]
+  
+  const portfolio = [
+    {
+      id: '1',
+      text: 'Сайт курьерской службы',
+      tags: ['HTML5', 'SCSS'],
+      cover: '/cleopartner.jpg'
+    },
+    {
+      id: '2',
+      text: 'Сайт курьерской службы',
+      tags: ['HTML5', 'SCSS'],
+      cover: '/cleopartner.jpg'
+    },
+    {
+      id: '3',
+      text: 'Сайт курьерской службы',
+      tags: ['HTML5', 'SCSS'],
+      cover: '/cleopartner.jpg'
+    },
+  ]
+
   return (
     <>
       <header>
@@ -47,6 +70,11 @@ function App() {
           >
             Мой стек  
           </Slider>
+          <TileSet
+            items={ portfolio }  
+          >
+            Портфолио
+          </TileSet>
         </Container>
       </main>
       <footer>

@@ -1,0 +1,38 @@
+.tile {
+  height: 300px;
+  box-shadow: 0 0 3px;
+  cursor: pointer;
+  position: relative;
+}
+.tile__cover {
+  transition: filter 0.2s;
+  width: 100%;
+  object-fit: cover;
+}
+.tile:hover .tile__cover {
+  filter: brightness(50%) blur(1.5px);
+}
+.tile__description {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  padding: 6px 9px;
+  background-color: rgba(187, 187, 187, 0.174);
+}
+.tile__tags {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  gap: 10px 13px;
+  max-width: 80%;
+  flex-wrap: wrap;
+}
+.tile__tag {
+  background-color: rgb(112, 112, 112);
+  border-radius: 1.5px;
+  padding: 3px 5px;
+  box-shadow: 3px 3px rgb(48, 67, 100);
+}

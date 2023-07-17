@@ -1,0 +1,11 @@
+.tileset {
+  display: grid;
+  gap: 20px;
+}
+
+.tileset--2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+.tileset--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
