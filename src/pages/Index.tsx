@@ -1,11 +1,11 @@
-import './App.css'
-import Slider from '@components/Slider/Slider'
+import Slider from '@components/Slider/Slider';
 import Container from '@components/Container/Container';
-import "the-new-css-reset/css/reset.css"; 
 import TileSet from '@components/TileSet/TileSet';
 
+import "the-new-css-reset/css/reset.css"; 
 
-function App() {
+
+function Index() {
   const slides = [
     {
       id: '1',
@@ -83,4 +83,4 @@ function App() {
   )
 }
 
-export default App
+export default Index
