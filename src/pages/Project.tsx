@@ -1,27 +1,52 @@
+import { useParams } from 'react-router-dom'
 import Slider from "@components/Slider/Slider"
 
 const items = [
   {
     id: '1',
-    image: '/cleopartner-1.jpg',
-  },
-  {
-    id: '2',
-    image: '/cleopartner-2.jpg',
-  },
-  {
-    id: '3',
-    image: '/cleopartner-3.jpg',
-  },
-  {
-    id: '4',
-    image: '/cleopartner-4.jpg',
+    description: `Пожалуй первый более-менее серьезный сайт, который я написал.
+                  Впрочем пока что без использования JS.
+                  Были использованы: HTML (+ семантика), CSS + SCSS. 
+                  Верстка адаптивная.`,
+    images: [
+      {
+        id: '1',
+        image: '/cleopartner-1.jpg',
+      },
+      {
+        id: '2',
+        image: '/cleopartner-2.jpg',
+      },
+      {
+        id: '3',
+        image: '/cleopartner-3.jpg',
+      },
+      {
+        id: '4',
+        image: '/cleopartner-4.jpg',
+      },
+    ]
   },
 ]
 
 const Project = () => {
+  const params = useParams()
+  const project = items.find((item) => item.id === params.projectId)
+  if (project === undefined) {
+    throw new Response(null, {
+      status: 404
+    })
+  }
   return (
-    <Slider items={ items } size={ 1 } height={ 500 } width={ 80 } />
+    <>
+      <Slider items={ project?.images } size={ 1 } height={ 500 } width={ 80 } />
+      <div>
+        <h2>Описание</h2>
+        <p>
+          { project?.description}
+        </p>
+      </div>
+    </>
   )
 }
 

@@ -1,5 +1,4 @@
 import Slider from '@components/Slider/Slider';
-import Container from '@components/Container/Container';
 import TileSet from '@components/TileSet/TileSet';
 
 import "the-new-css-reset/css/reset.css"; 
@@ -41,11 +40,10 @@ const portfolio = [
     id: '1',
     text: 'Сайт курьерской службы',
     tags: ['HTML5', 'SCSS'],
-    cover: '/cleopartner-1.jpg'
+    cover: '/cleopartner-1.jpg',
   },
   {
     id: '2',
-    text: 'Сайт курьерской службы',
     tags: ['HTML5', 'SCSS'],
     cover: '/cleopartner-1.jpg'
   },
