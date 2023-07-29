@@ -1,6 +1,7 @@
 .slider-wrapper {
   position: relative;
   display: flex;
+  margin: 0 auto;
 }
 .slider-wrapper__pagination {
   cursor: pointer;

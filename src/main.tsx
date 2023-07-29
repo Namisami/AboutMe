@@ -2,7 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import Index from '@pages/Index'
+import Container from '@components/Container/Container';
+import Welcome from '@pages/Welcome'
 import Project from '@pages/Project';
 
 import './index.css'
@@ -10,7 +11,7 @@ import './index.css'
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Index />
+    element: <Welcome />
   },
   {
     path: 'projects/:projectId',
@@ -20,6 +21,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <RouterProvider router={ router }/>
+    <Container>
+      <RouterProvider router={ router }/>
+    </Container>
   </React.StrictMode>,
 )

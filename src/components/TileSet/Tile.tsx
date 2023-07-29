@@ -19,9 +19,9 @@ const Tile = ({
 
   const tagList = tags.map((tag) => 
     <li className='tile__tag' key={ tag }>
-      <a href='#' className='tile__tag-link'>
+      <div className='tile__tag-link'>
         { tag }
-      </a>
+      </div>
     </li>
   )
 

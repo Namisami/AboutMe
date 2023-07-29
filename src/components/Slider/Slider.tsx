@@ -7,12 +7,16 @@ import { PropsWithChildren, useState, useEffect } from 'react'
 export interface SliderProps extends PropsWithChildren {
   items: SliderItemProps[]
   size?: number
+  height?: number
+  width?: number
 }
 
 const Slider = ({
   children,
   items,
-  size=3
+  size=3,
+  height=200,
+  width=100,
 }: SliderProps) => {
   const [current, setCurrent] = useState(0)
   const [side, setSide] = useState(0)
@@ -47,23 +51,25 @@ const Slider = ({
   const slides = items.map((item, index) => 
     <SliderItem
       key={ item.id } 
-      className='slider__slider-item'
+      className={`slider__slider-item slider-item--${size}`}
       title={ item.title }
       start_date={ item.start_date }
       icon_list={ item.icon_list }
       description={ item.description }
       position={ positionCalc(index) }
+      image={ item.image }
     />
   )
 
   return (
     <>
       <h2>{ children }</h2>
-      <SliderWrapper
+      <SliderWrapper 
+        width={ width }
         onNextBtnClick={ () => setSide(1) }
         onPrevBtnClick={ () => setSide(-1) }
       >
-        <ul className='slider' >
+        <ul className='slider' style={{ height: `${height}px` }}>
           { slides }
         </ul>
       </SliderWrapper>

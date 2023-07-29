@@ -5,11 +5,12 @@ import Icon from '@components/Icon/Icon'
 
 export interface SliderItemProps extends React.HTMLAttributes<HTMLDivElement> {
   id?: string
-  title: string
-  start_date: Date
-  icon_list: string[]
-  description: string
+  title?: string
+  start_date?: Date
+  icon_list?: string[]
+  description?: string
   position?: number
+  image?: string
 }
 
 export interface Style {
@@ -26,6 +27,7 @@ const SliderItem = ({
   icon_list,
   description,
   position,
+  image
 }: SliderItemProps) => {
   const [style, setStyle] = useState<Style>({})
   const oldPosition = usePrevious(position)
@@ -71,33 +73,37 @@ const SliderItem = ({
   }, [position])
 
   const convertDate = () => {
-    let dateNow = new Date()
-    let yearsPassed = dateNow.getFullYear() - start_date.getFullYear()
-    let monthsPassed = dateNow.getMonth() - start_date.getMonth()
-    if (monthsPassed === 0) {
-      return `${yearsPassed} г.`
-    } else if (monthsPassed < 0) {
-      if (yearsPassed - 1 <= 0) {
-        return `${12 - Math.abs(monthsPassed)} мес.`
-      } else {
-        return `${yearsPassed - 1} г. ${12 - Math.abs(monthsPassed)} мес.`
+    if (start_date) {
+      let dateNow = new Date()
+      let yearsPassed = dateNow.getFullYear() - start_date.getFullYear()
+      let monthsPassed = dateNow.getMonth() - start_date.getMonth()
+      if (monthsPassed === 0) {
+        return `${yearsPassed} г.`
+      } else if (monthsPassed < 0) {
+        if (yearsPassed - 1 <= 0) {
+          return `${12 - Math.abs(monthsPassed)} мес.`
+        } else {
+          return `${yearsPassed - 1} г. ${12 - Math.abs(monthsPassed)} мес.`
+        }
       }
+      return `${yearsPassed} г. ${monthsPassed} мес.`
     }
-    return `${yearsPassed} г. ${monthsPassed} мес.`
   }
 
   const icons = () => {
-    return icon_list.map(icon => {
-      return (
-        <li key={ icon }>
-          <Icon 
-            className="slider-item__icon"
-            src={ icon }
-            alt='Python'
-          />
-        </li>
-      )
-    })
+    if (icon_list) {
+      return icon_list.map(icon => {
+        return (
+          <li key={ icon }>
+            <Icon 
+              className="slider-item__icon"
+              src={ icon }
+              alt='Python'
+            />
+          </li>
+        )
+      })
+    }
   }
 
   return (
@@ -105,14 +111,21 @@ const SliderItem = ({
       className={`slider-item ${className}`} 
       style={ style }
     >
-      <div className="slider-item__header">
-        <h3 className='slider-item__title'>{ title }</h3>
-        <p className='slider-item__date'>{ convertDate() }</p>
-        <ul className='slider-item__icons'>
-          { icons() }
-        </ul>
-      </div>
-      <p className='slider-item__text'>{ description }</p>
+      { image 
+        ? <>
+            <img className='slider-item__image' src={`${image}`}/>
+          </>
+        : <>
+            <div className="slider-item__header">
+              <h3 className='slider-item__title'>{ title }</h3>
+              <p className='slider-item__date'>{ convertDate() }</p>
+              <ul className='slider-item__icons'>
+                { icons() }
+              </ul>
+            </div>
+            <p className='slider-item__text'>{ description }</p>
+          </>
+      }
     </li>
   )
 }
