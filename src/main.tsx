@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 
 import Container from '@components/Container/Container';
+import Navbar from '@components/Navbar/Navbar';
 import Welcome from '@pages/Welcome'
 import Project from '@pages/Project';
 
@@ -16,21 +17,16 @@ const router = createBrowserRouter([
   {
     path: '/projects',
     element: <Welcome />,
-    handle: {
-      crumb: () => "Проекты"
-    },
   },
   {
     path: "/projects/:projectId",
     element: <Project />,
-    handle: {
-      crumb: () => 'Name'
-    }
   }
 ])
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
+    <Navbar />
     <Container>
       <RouterProvider router={ router }/>
     </Container>

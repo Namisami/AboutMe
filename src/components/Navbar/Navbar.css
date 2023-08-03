@@ -1,0 +1,15 @@
+.navbar {
+  height: 45px;
+  background: #262948;
+  padding: 0 10%;
+  display: flex;
+  align-items: center;
+}
+.navbar__list {
+  display: flex;
+  gap: 15px;
+}
+.navbar__item:not(:nth-child(1))::before {
+  content: '-';
+  padding-right: 1em;
+}
