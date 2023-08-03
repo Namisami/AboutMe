@@ -1,3 +1,6 @@
+import { Outlet } from "react-router-dom";
+
+import Breadcrumbs from '@/components/Breadcrumbs/Breadcrumbs';
 import Slider from '@components/Slider/Slider';
 import TileSet from '@components/TileSet/TileSet';
 
@@ -61,16 +64,15 @@ const Welcome = () => {
       <header>
       </header>
       <main>     
+        <Breadcrumbs />
+        <h2 id="stack">Мой стек</h2>
         <Slider 
           items={ slides }
-        >
-          Мой стек  
-        </Slider>
+        />  
+        <h2 id="projects">Портфолио</h2>
         <TileSet
           items={ portfolio }  
-        >
-          Портфолио
-        </TileSet>
+        />
       </main>
       <footer>
       </footer>

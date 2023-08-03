@@ -1,5 +1,6 @@
 import './Tile.css'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 export interface TileProps extends React.AllHTMLAttributes<HTMLDivElement> {
   id?: string
@@ -26,22 +27,25 @@ const Tile = ({
   )
 
   return (
-    <a
-      onMouseEnter={ () => setShowDesc(true) } 
-      onMouseLeave={ () => setShowDesc(false) }
-      className={`tile ${className}`}
-      href={`/projects/${ id }`}
+    <Link
+      to={`/projects/${id}`}
     >
-      <img className='tile__cover' src={ cover } alt={ text } />
-      { showDesc &&
-        <ul className='tile__tags'>
-          { tagList }
-        </ul>
-      }
-      { showDesc &&
-        <p className='tile__description'>{ text }</p>
-      }
-    </a>
+      <div
+        onMouseEnter={ () => setShowDesc(true) } 
+        onMouseLeave={ () => setShowDesc(false) }
+        className={`tile ${className}`}  
+      >
+        <img className='tile__cover' src={ cover } alt={ text } />
+        { showDesc &&
+          <ul className='tile__tags'>
+            { tagList }
+          </ul>
+        }
+        { showDesc &&
+          <p className='tile__description'>{ text }</p>
+        }
+      </div>
+    </Link>
   )
 }
 

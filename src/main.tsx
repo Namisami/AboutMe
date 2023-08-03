@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 
 import Container from '@components/Container/Container';
 import Welcome from '@pages/Welcome'
@@ -11,11 +11,21 @@ import './index.css'
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Welcome />
+    element: <Welcome />,
   },
   {
-    path: 'projects/:projectId',
-    element: <Project />
+    path: '/projects',
+    element: <Welcome />,
+    handle: {
+      crumb: () => "Проекты"
+    },
+  },
+  {
+    path: "/projects/:projectId",
+    element: <Project />,
+    handle: {
+      crumb: () => 'Name'
+    }
   }
 ])
 
