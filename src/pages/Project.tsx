@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom'
 import Slider from "@components/Slider/Slider"
 import Breadcrumbs from '@components/Breadcrumbs/Breadcrumbs'
+import Text from '@components/Text/Text'
 
 const items = [
   {
@@ -69,9 +70,9 @@ const Project = () => {
       <Slider items={ project?.images } size={ 1 } height={ 500 } width={ 80 } />
       <div>
         <h2>Описание</h2>
-        <p>
+        <Text>
           { project?.description}
-        </p>
+        </Text>
       </div>
     </>
   )

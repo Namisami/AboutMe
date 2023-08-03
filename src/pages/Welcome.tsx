@@ -1,8 +1,7 @@
-import { Outlet } from "react-router-dom";
-
 import Breadcrumbs from '@/components/Breadcrumbs/Breadcrumbs';
 import Slider from '@components/Slider/Slider';
 import TileSet from '@components/TileSet/TileSet';
+import Text from '@components/Text/Text';
 
 import "the-new-css-reset/css/reset.css"; 
 
@@ -65,6 +64,13 @@ const Welcome = () => {
       </header>
       <main>     
         <Breadcrumbs />
+        <h2 id='me'>Обо мне</h2>
+        <Text>
+          Меня зовут Хасанов Марат и я начинающий Frontend-разработчик. В данный момент являюсь студентом Московского политеха и учусь
+          на третьем курсе направления "Веб-технологии", обучаясь именно тому, чем планирую заниматься в ближайшем будущем. Помимо этого
+          также стараюсь развиваться и в других сферах: в основном учу английский (в данный момент уровень где-то Intermediate) 
+          и играю на гитаре, на остальное затрачиваю сравнительно меньше времени.
+        </Text>
         <h2 id="stack">Мой стек</h2>
         <Slider 
           items={ slides }
